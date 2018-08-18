@@ -1,0 +1,26 @@
+{
+  "name": "FAC14_Week3",
+  "version": "1.0.0",
+  "description": "solidifying learnings from week 3 team project: XHR request to own server",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "node src/tests.js | tap-spec",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/njons/FAC14_Week3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/njons/FAC14_Week3/issues"
+  },
+  "homepage": "https://github.com/njons/FAC14_Week3#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.3",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.1"
+  }
+}
