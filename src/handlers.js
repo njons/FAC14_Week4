@@ -64,35 +64,47 @@ const queryRoute = (request, response, url) => {
   // get the end of the URL to findout what the user searched
   let urlEnd = url.split("/search/")[1];
   // clean up the search by only allowing upper/lowercase letters, numbers and cutting out spaces at the end
+  console.log("this is the url end", urlEnd);
   let sanitsiedUrl = urlEnd.replace(/[^A-Za-z0-9' ]/g, "").trim();
   //  un-URL the URL and turn it into plain language
   let decodedQuery = decodeURI(sanitsiedUrl);
   // console.log(`this is the decoded query`, decodedQuery)
   // this needs to be used to match in the json database
-  const autocomplete = filteredObject(searchJSON(decodedQuery, data));
+  // console.log(searchJSON(decodedQuery, data));
+  const autocomplete = searchJSON(decodedQuery, data);
   response.end(JSON.stringify(autocomplete));
 };
 
-//
-// function searchJSON(query, data) {
-//   var friends = data["friends"];
-//   const matchArray = friends.filter(item => {
-//     let name = item.name.toLowerCase();
-//     console.log("these are the names", name);
-//     return name.includes(query.toLowerCase());
-//   });
-//   console.log("this is the match array:", matchArray);
-//   return matchArray;
-// }
-//
+// check the user input letter by letter and determine if a match is available in the json
+function searchJSON(query, data) {
+  console.log("this is query: ", query);
+  console.log("this is data:", data);
+  // console.log("this is data: ", Object.keys(data));
+  const matchArray = data.filter(item => {
+    let questions = item.question;
+    return questions.toLowerCase().includes(query.toLowerCase());
+    console.log("this is the query:", query.toLowerCase());
+    console.log("this is item in filter:", item);
+  });
+  console.log("this is the match array:", matchArray);
+  return matchArray;
+}
+
+// // carry on the array of matches to serve the possible questions
 // function filteredObject(matches) {
 //   // start with empty object
 //   const newObj = {};
 //   // take the array of matched keys and set it value to what's the value in the json
-//   matches.forEach(item => (newObj[item.name] = data[item.name]));
+//   matches.forEach(item => {
+//     console.log("this is item in the forEach:", item);
+//     newObj.question = item.question;
+//     newObj.answer = item.answer;
+//     // (newObj.question = data.question));
+//   });
 //   // return the filled new Object
+//   console.log("this is the new object:", newObj.item);
 //   console.log("this is the new object:", newObj);
-//   return newObj;
+//   // return newObj;
 // }
 
 // make the handlers functoins accessible to route.js

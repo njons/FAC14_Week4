@@ -1,21 +1,20 @@
 // link to handler.js
-const handlers = require('./handlers');
-const search = "/search";
+const handlers = require("./handlers");
 
 const routes = (request, response) => {
   const url = request.url;
 
-  const urlFolders = url.split('/');
+  const urlFolders = url.split("/");
 
   if (url === "/") {
     handlers.homeRoute(request, response);
-  } else if (url.includes("public/")) {
+  } else if (url.includes("/public/")) {
     handlers.publicRoute(request, response, url);
-  } else if (url.includes(search)) {
+  } else if (url.includes("search/")) {
     handlers.queryRoute(request, response, url);
   } else {
-    response.writeHead(404, {"Content-Type" : "text/html"});
-    response.end(`this is the custom 404, right here <3`)
+    response.writeHead(404, { "Content-Type": "text/html" });
+    response.end(`this is the custom 404, right here <3`);
   }
 };
 
