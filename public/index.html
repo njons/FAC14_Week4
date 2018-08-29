@@ -7,19 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="public/reset.css">
     <link rel="stylesheet" type="text/css" href="public/style.css">
+    <link rel="stylesheet" type="text/css" href="public/fonts.css">
   </head>
 
   <body>
-    <!-- <header>
-      <h1><div id="sparkles">&#x2728;</div></h1>
-    </header> -->
+    <main>
 
-    <form method="get">
-      <label for="search">Search</label>
-      <input type="text" id="search" placeholder="What the tech?!!" autocomplete="off">
-      <button type="submit" id="button" value="Submit">&#x26A1;</button>
-      <ul id="datalist"></ul>
-    </form>
+      <header>
+        <h1>Search your programming questions:</h1>
+          <!-- <div id="sparkles">&#x2728;</div> -->
+      </header>
+
+      <section id="questions">
+        <form method="get">
+          <input type="text" id="search" placeholder="What the heck, tech?!!" autocomplete="off">
+          <button type="submit" id="button" value="submit"></button>
+          <ul id="datalist"></ul>
+        </form>
+      </section>
+
+      <section id="answers">
+        <h1 id="resultsHeading" class="hidden" >Answer:</h1>
+        <div id="results"></div>
+      </section>
+
+    </main>
   </body>
 
   <script src="public/script.js"></script>

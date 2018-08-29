@@ -2,75 +2,117 @@ body {
   -webkit-font-smoothing: antialiased;
   background-color: #f1e2d0;
   height: 100vh;
-  cline-height: 1.2;
-  letter-spacing: 3px;
   margin: 0 20px;
-
   display: flex;
   flex-direction: column;
 }
 
-h1,
+main {
+  margin: 4vh auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+}
+
+#questions {
+  height: 55vh;
+}
+
+#answers {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#results,
+header,
 form,
 input,
-button,
 li {
+  font-family: "InputMonoEL", monospace;
+  font-size: calc(1rem + 4.5vmin);
+  letter-spacing: 3px;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: calc(1rem + 1vmin);
+  text-transform: uppercase;
+  /* font-family: "InputMonoMedium", monospace; */
   font-family: "InputMono-bold", monospace;
-  font-size: calc(1rem + 4.5vmin);c
+  color: #1b1b26;
+  text-shadow: 5px 5px #f7df3e;
+  padding-bottom: 3vw;
 }
 
 /*  STYLES FOR THE FORM */
 form {
-  margin: auto;
-  display: flex;
-  flex-wrap: wrap;
+  /* margin: 5vh auto auto auto; */
+  /* display: flex;
+  flex-wrap: wrap; */
   position: relative;
   /* width: 95vw; */
+}
+
+button {
+  background-color: transparent;
+  height: 0px;
+  width: 0px;
+  outline: none;
+  border: none;
 }
 
 input {
   border: none;
   background: none;
-  color: black;
+  color: #1b1b26;
   background-color: #f7df3e;
-  padding: 0 20px;
-  /* border-bottom: 6px solid black; */
-  /* width: 80vw; */
-}
-
-button {
-  background-color: transparent;
-  border: none;
-  margin: 20px 0;
-  /* color: white; */
-  /* width: 10vw; */
-  transform: scale(2) rotate(-5deg);
-  /* transition: all 0.2s ease; */
-}
-
-button:hover {
-  transform: scale(4) rotate(0deg);
-}
-
-label {
-  color: transparent;
-  height: 0px;
-  width: 0px;
+  padding: 20px;
+  width: calc(90% - 20px);
 }
 
 ul {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  width: calc(90% + 20px);
   position: absolute;
   top: 100%;
   left: 0;
 }
 
+#results {
+  letter-spacing: 1px;
+}
+
+#resultsHeading {
+  padding-bottom: 1vw;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: flex;
+}
+
+#results,
 li {
-  font-size: calc(1rem + 1.5vmin);
+  font-size: calc(1rem + 1vmin);
   margin: 7px 0;
+  padding: 0 5px 2px 5px;
+}
+
+li {
   border-bottom: solid 2px #363645;
+  cursor: pointer;
+}
+
+li:hover {
+  color: #1b1b26;
+  text-shadow: 4px 4px yellow;
 }
 
 /* STYLES TO MAKE THE PLACEHOLDER TEXT BLACK */

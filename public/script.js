@@ -2,6 +2,9 @@
 var input = document.getElementById("search");
 var button = document.getElementById("button");
 var datalist = document.getElementById("datalist");
+var results = document.getElementById("results");
+var resultsP = document.createElement("p");
+var resultsHeading = document.getElementById("resultsHeading");
 
 // listen for every key press (collect the input and use it to send an xhr request to the server)
 input.addEventListener("keyup", function(event) {
@@ -15,6 +18,11 @@ input.addEventListener("keyup", function(event) {
     // combine the current url with the input and how to handle the response once its back (cb in the xhr function)
     xhrRequest(urlCreator(pageUrl, searchInput), constructDataList);
   }
+});
+
+button.addEventListener("click", function(event) {
+  event.preventDefault();
+  xhrRequest(urlCreator(window.location.href, input.value), constructDataList);
 });
 
 // create a URL based on the input from the user
@@ -50,26 +58,26 @@ function constructDataList(resultsArray) {
   // console.log("this is array in contructDataList:", resultsArray);
   // clean list items at each keypress
   datalist.innerText = "";
-
   // make a list item for each question in the obj
   resultsArray.forEach(function(item) {
     var listItem = document.createElement("li");
     listItem.innerText = item.question;
     datalist.appendChild(listItem);
+
+    resultsP.innerText = "";
+    listItem.addEventListener("click", function(event) {
+      resultsHeading.classList.add("show");
+      resultsP.innerText = item.answer;
+      results.appendChild(resultsP);
+    });
   });
 
-  // limit the number of list items at 5
-  if (resultsArray.length > 5) {
-    resultsArray = resultsArray.slice(0, 5);
-  } else if (resultsArray.length === 0) {
-    // if object is empty
-    resultsArray.push("No matches found");
-  }
-  return resultsArray;
+  // // limit the number of list items at 5
+  // if (resultsArray.length > 1) {
+  //   resultsArray = resultsArray.slice(0, 5);
+  // } else if (resultsArray.length === 0) {
+  //   // if object is empty
+  //   resultsArray.push("No matches found");
+  // }
+  // return resultsArray;
 }
-
-// make sure that the same functions run at sumbit as well
-button.addEventListener("click", function(event) {
-  event.preventDefault();
-  xhrRequest(urlCreator(window.location.href, input.value), constructDataList);
-});
