@@ -10,8 +10,6 @@ var resultsHeading = document.getElementById("resultsHeading");
 input.addEventListener("keyup", function(event) {
   // get the input from the user
   var searchInput = input.value;
-  // console.log("this is the search input from the user", searchInput);
-
   if (searchInput) {
     // if there is input, make the request call
     let pageUrl = window.location.href;
@@ -29,7 +27,6 @@ button.addEventListener("click", function(event) {
 function urlCreator(url, str) {
   // takes url and adds a string value that corresponds to the user search input (str)
   var searchUri = encodeURIComponent(str);
-  // console.log("this is the url from the user", searchUri);
   return url + "search/" + searchUri;
 }
 
@@ -42,7 +39,6 @@ function xhrRequest(url, cb) {
       // ensure that the object returned form the server is parsed
       var parsedObj = JSON.parse(xhr.responseText);
       // transfer the results into the empty object waiting for info
-      // console.log("this is the parsed obj", parsedObj);
       return cb(parsedObj);
     } else if (xhr.readyState === 4 && xhr.status != 200) {
       // logs error if request gor all the way, but a status code other than 200 is returned
@@ -55,7 +51,6 @@ function xhrRequest(url, cb) {
 
 // here is were we handle the JSON
 function constructDataList(resultsArray) {
-  // console.log("this is array in contructDataList:", resultsArray);
   // clean list items at each keypress
   datalist.innerText = "";
   // make a list item for each question in the obj
@@ -64,20 +59,13 @@ function constructDataList(resultsArray) {
     listItem.innerText = item.question;
     datalist.appendChild(listItem);
 
+    // clean the results text at each click
     resultsP.innerText = "";
+    // answer to question is revealed on click
     listItem.addEventListener("click", function(event) {
       resultsHeading.classList.add("show");
       resultsP.innerText = item.answer;
       results.appendChild(resultsP);
     });
   });
-
-  // // limit the number of list items at 5
-  // if (resultsArray.length > 1) {
-  //   resultsArray = resultsArray.slice(0, 5);
-  // } else if (resultsArray.length === 0) {
-  //   // if object is empty
-  //   resultsArray.push("No matches found");
-  // }
-  // return resultsArray;
 }
