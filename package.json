@@ -20,9 +20,11 @@
   },
   "homepage": "https://github.com/njons/FAC14_Week3#readme",
   "devDependencies": {
-    "nodemon": "^1.18.3",
     "supertest": "^3.1.0",
     "tap-spec": "^5.0.0",
     "tape": "^4.9.1"
+  },
+  "dependencies": {
+    "nodemon": "^1.18.4"
   }
 }
