@@ -1,7 +1,7 @@
 {
-  "name": "FAC14_Week3",
+  "name": "FAC14_Week4",
   "version": "1.0.0",
-  "description": "solidifying learnings from week 3 team project: XHR request to own server",
+  "description": "solidifying learnings from week 4 team project: XHR request from backend and autocomplete",
   "main": "src/server.js",
   "scripts": {
     "start": "nodemon src/server.js",
