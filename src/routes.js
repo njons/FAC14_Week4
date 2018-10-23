@@ -3,7 +3,6 @@ const handlers = require("./handlers");
 
 const routes = (request, response) => {
   const url = request.url;
-
   const urlFolders = url.split("/");
 
   if (url === "/") {
